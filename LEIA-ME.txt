@@ -1,0 +1,25 @@
+SL Benfica Futsal — v13.4 PWA Offline
+
+BASE
+- Aplicação: v13.4 aprovada.
+- A lógica da aplicação não foi alterada.
+- Apenas foram adicionados os ficheiros necessários para instalação como PWA.
+
+FICHEIROS
+- index.html
+- manifest.json
+- service-worker.js
+- icon-192.png
+- icon-512.png
+
+COMO INSTALAR NO ANDROID
+1. Colocar TODOS estes ficheiros num alojamento HTTPS, por exemplo GitHub Pages.
+2. Abrir o endereço no Chrome do tablet enquanto estiver online.
+3. Menu ⋮ > Instalar aplicação / Adicionar ao ecrã principal.
+4. Abrir uma vez a aplicação instalada ainda com Internet.
+5. Depois disso, a aplicação fica em cache e pode abrir e funcionar offline.
+
+IMPORTANTE
+- O modo PWA/offline requer HTTPS (ou localhost). Não funciona como PWA se abrir apenas index.html através de file://.
+- Plantel, dados da partida, fotos e estado continuam guardados localmente no navegador/dispositivo.
+- O ícone escolhido foi incluído nos tamanhos 192x192 e 512x512.

@@ -1,0 +1,25 @@
+{
+  "name": "SL Benfica Futsal - Tempos",
+  "short_name": "SLB Futsal",
+  "description": "Controlo de tempos - SL Benfica Futsal Feminino",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#05080c",
+  "theme_color": "#c81012",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
