@@ -1,4 +1,4 @@
-const CACHE_NAME = "slb-futsal-v13-5-pwa-1";
+const CACHE_NAME = "slb-futsal-v13-5b-pwa-1";
 const APP_SHELL = [
   "./",
   "./index.html",
