@@ -1,10 +1,11 @@
-const CACHE_NAME = "slb-futsal-v14-7-pwa-1";
+const CACHE_NAME = "slb-futsal-v15-6-pwa-1";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./manifest.json",
   "./icon-192.png",
-  "./icon-512.png"
+  "./icon-512.png",
+  "./version.json"
 ];
 
 self.addEventListener("install", event => {
@@ -25,17 +26,40 @@ self.addEventListener("activate", event => {
 
 self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
+
+  const url = new URL(event.request.url);
+  const isNavigation = event.request.mode === "navigate";
+  const isIndex = url.pathname.endsWith("/") || url.pathname.endsWith("/index.html");
+  const isVersion = url.pathname.endsWith("/version.json");
+
+  /* index.html e navegação: NETWORK-FIRST.
+     Havendo Internet, vai sempre buscar a versão publicada no GitHub.
+     Offline, usa a cópia local. */
+  if (isNavigation || isIndex || isVersion) {
+    event.respondWith(
+      fetch(event.request, {cache:"no-store"}).then(response => {
+        if (response && response.status === 200) {
+          const copy=response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request,copy));
+        }
+        return response;
+      }).catch(() =>
+        caches.match(event.request).then(cached => cached || caches.match("./index.html"))
+      )
+    );
+    return;
+  }
+
+  /* Recursos estáticos: cache-first para continuar rápida e funcionar offline. */
   event.respondWith(
     caches.match(event.request).then(cached => {
       if (cached) return cached;
       return fetch(event.request).then(response => {
-        if (!response || response.status !== 200 || response.type === "opaque") {
-          return response;
-        }
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+        if (!response || response.status !== 200 || response.type === "opaque") return response;
+        const copy=response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request,copy));
         return response;
-      }).catch(() => caches.match("./index.html"));
+      });
     })
   );
 });
