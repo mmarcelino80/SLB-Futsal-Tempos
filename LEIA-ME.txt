@@ -1,25 +1,14 @@
-SL Benfica Futsal — v13.4 PWA Offline
+SL Benfica Futsal — v15.5
 
-BASE
-- Aplicação: v13.4 aprovada.
-- A lógica da aplicação não foi alterada.
-- Apenas foram adicionados os ficheiros necessários para instalação como PWA.
+Correção da v15.4:
+- corrigido o erro que interrompia a execução antes de o setInterval do relógio ser registado;
+- o relógio principal e as funções-base de contagem foram comparados com a v14.7 e permanecem idênticos;
+- mantida a nova lógica dos cartões da v15.4.
 
-FICHEIROS
+Causa encontrada:
+- a renderização inicial chamava v15CardBadgesHTML() antes dessa função existir;
+- isso gerava um erro JavaScript e impedia o código de chegar ao setInterval do relógio.
+
+No GitHub substituir:
 - index.html
-- manifest.json
 - service-worker.js
-- icon-192.png
-- icon-512.png
-
-COMO INSTALAR NO ANDROID
-1. Colocar TODOS estes ficheiros num alojamento HTTPS, por exemplo GitHub Pages.
-2. Abrir o endereço no Chrome do tablet enquanto estiver online.
-3. Menu ⋮ > Instalar aplicação / Adicionar ao ecrã principal.
-4. Abrir uma vez a aplicação instalada ainda com Internet.
-5. Depois disso, a aplicação fica em cache e pode abrir e funcionar offline.
-
-IMPORTANTE
-- O modo PWA/offline requer HTTPS (ou localhost). Não funciona como PWA se abrir apenas index.html através de file://.
-- Plantel, dados da partida, fotos e estado continuam guardados localmente no navegador/dispositivo.
-- O ícone escolhido foi incluído nos tamanhos 192x192 e 512x512.
