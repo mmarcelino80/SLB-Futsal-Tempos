@@ -8,6 +8,9 @@ self.addEventListener("install", event => {
     const cache=await caches.open(APP_CACHE);
     for(const url of APP_SHELL){
       try{
+        // A worker/manifest refresh must not replace the HTML before the user
+        // accepts the verified application update through the existing module.
+        if(url==="./index.html"&&await cache.match(url))continue;
         const r=await fetch(url,{cache:"reload"});
         if(r&&r.ok)await cache.put(url,r.clone());
       }catch(e){}
@@ -22,6 +25,24 @@ self.addEventListener("activate", event => {
 self.addEventListener("fetch", event => {
   if(event.request.method!=="GET")return;
   const url=new URL(event.request.url);
+
+  /* Refresh the installed PWA's display preference; keep offline fallback. */
+  if(url.pathname.endsWith("/manifest.json")){
+    event.respondWith((async()=>{
+      const cache=await caches.open(APP_CACHE);
+      try{
+        const response=await fetch(event.request,{cache:"no-store"});
+        if(response&&response.ok){
+          await cache.put("./manifest.json",response.clone());
+          return response;
+        }
+        return (await cache.match("./manifest.json"))||response;
+      }catch(e){
+        return (await cache.match("./manifest.json"))||new Response("Manifest indisponível",{status:503});
+      }
+    })());
+    return;
+  }
 
   /* version.json é minúsculo: procura online, mas não interfere com a app offline. */
   if(url.pathname.endsWith("/version.json")){

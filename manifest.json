@@ -4,7 +4,7 @@
   "description": "Controlo de tempos - SL Benfica Futsal Feminino",
   "start_url": "./",
   "scope": "./",
-  "display": "standalone",
+  "display": "fullscreen",
   "orientation": "landscape",
   "background_color": "#05080c",
   "theme_color": "#c81012",

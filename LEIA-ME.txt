@@ -1,14 +1,30 @@
-SL Benfica Futsal — v15.5
+SL Benfica Futsal — v18.9 candidata
 
-Correção da v15.4:
-- corrigido o erro que interrompia a execução antes de o setInterval do relógio ser registado;
-- o relógio principal e as funções-base de contagem foram comparados com a v14.7 e permanecem idênticos;
-- mantida a nova lógica dos cartões da v15.4.
+ECRÃ INTEIRO
+A PWA instalada passa a pedir modo fullscreen. O navegador pode usar standalone
+como alternativa. Ocultar as barras do Android depende do dispositivo.
+Se a app abrir com as barras visíveis, tocar em Ecrã inteiro, no espaço livre
+à esquerda do rodapé. O comando só aparece quando existe suporte para a API.
+O pedido é feito no toque, pedindo também a ocultação dos controlos de navegação.
+Para sair do modo ativado pelo botão, tocar em Sair do ecrã inteiro.
+O comando Não disponível indica que o dispositivo rejeitou o pedido;
+a aplicação continua funcional na vista atual, sem pausa ou recarregamento.
 
-Causa encontrada:
-- a renderização inicial chamava v15CardBadgesHTML() antes dessa função existir;
-- isso gerava um erro JavaScript e impedia o código de chegar ao setInterval do relógio.
+ESPAÇO RECUPERADO
+A altura útil é medida novamente ao entrar/sair do modo ecrã inteiro e ao
+redimensionar a janela. No tablet de 1280 × 800, o espaço adicional passa às
+quatro filas de atletas: a zona da fotografia e o quadro dos tempos crescem
+lado a lado. Não existe zoom global, alteração de colunas ou larguras, nem
+nova redução dos elementos ajustados na v18.8. As fotos mantêm as proporções.
 
-No GitHub substituir:
-- index.html
-- service-worker.js
+ATUALIZAÇÃO
+Substituir os sete ficheiros do pacote em conjunto no site. O manifest pode
+demorar a ser aplicado pelo navegador a uma instalação já existente; o botão
+permite pedir ecrã inteiro entretanto, sem reinstalar a app ou apagar dados.
+O service worker atualiza o manifest com alternativa offline e mantém o HTML
+em cache até à atualização aceite pelo utilizador no módulo existente.
+
+VALIDAÇÃO
+Esta versão é candidata e não foi publicada. A ocultação das barras e o aspeto
+final têm de ser confirmados no tablet; o navegador de teste deste ambiente
+tem bloqueado a abertura da aplicação local.
