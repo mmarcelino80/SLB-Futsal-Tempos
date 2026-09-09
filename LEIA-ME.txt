@@ -1,4 +1,4 @@
-SL Benfica Futsal — v18.9 candidata
+SL Benfica Futsal — v18.91 candidata
 
 ECRÃ INTEIRO
 A PWA instalada passa a pedir modo fullscreen. O navegador pode usar standalone
