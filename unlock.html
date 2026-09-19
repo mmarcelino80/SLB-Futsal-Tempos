@@ -1,0 +1,13 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Desbloquear jornada</title>
+<body style="font-family:system-ui;background:#111;color:#fff;display:grid;place-items:center;min-height:100vh;margin:0">
+<div style="text-align:center"><h2>A desbloquear a jornada…</h2><p>Não feches esta página.</p></div>
+<script>
+try {
+  localStorage.removeItem('slb_futsal_fixture_registry_v181');
+} catch(e) {}
+setTimeout(()=>location.replace('./'),300);
+</script>
+</body>
