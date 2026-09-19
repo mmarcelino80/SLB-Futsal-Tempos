@@ -1,30 +1,78 @@
-SL Benfica Futsal — v18.91 candidata
+SL Benfica Futsal — v18.93 candidata
+Base funcional aprovada pelo utilizador: v18.92
+Base publicada de referência: v18.91
 
-ECRÃ INTEIRO
-A PWA instalada passa a pedir modo fullscreen. O navegador pode usar standalone
-como alternativa. Ocultar as barras do Android depende do dispositivo.
-Se a app abrir com as barras visíveis, tocar em Ecrã inteiro, no espaço livre
-à esquerda do rodapé. O comando só aparece quando existe suporte para a API.
-O pedido é feito no toque, pedindo também a ocultação dos controlos de navegação.
-Para sair do modo ativado pelo botão, tocar em Sair do ecrã inteiro.
-O comando Não disponível indica que o dispositivo rejeitou o pedido;
-a aplicação continua funcional na vista atual, sem pausa ou recarregamento.
+CONFIRMAÇÃO DE GR COMO JOGADORA DE CAMPO
+Com GR em campo, substituir uma jogadora de campo por uma GR suplente
+pede confirmação. Abrir, confirmar e cancelar não alteram o estado do relógio.
+Cancelar não efetua a substituição. Trocas normais de GR mantêm-se diretas.
 
-ESPAÇO RECUPERADO
-A altura útil é medida novamente ao entrar/sair do modo ecrã inteiro e ao
-redimensionar a janela. No tablet de 1280 × 800, o espaço adicional passa às
-quatro filas de atletas: a zona da fotografia e o quadro dos tempos crescem
-lado a lado. Não existe zoom global, alteração de colunas ou larguras, nem
-nova redução dos elementos ajustados na v18.8. As fotos mantêm as proporções.
+LIMITE DA CONVOCATÓRIA
+Máximo de 14 atletas convocadas. A 15.ª seleção é recusada, com aviso.
+Guardar e iniciar uma parte também validam o limite, incluindo jogos antigos.
+O plantel pode manter mais atletas; nenhuma é removida automaticamente.
 
-ATUALIZAÇÃO
-Substituir os sete ficheiros do pacote em conjunto no site. O manifest pode
-demorar a ser aplicado pelo navegador a uma instalação já existente; o botão
-permite pedir ecrã inteiro entretanto, sem reinstalar a app ou apagar dados.
-O service worker atualiza o manifest com alternativa offline e mantém o HTML
-em cache até à atualização aceite pelo utilizador no módulo existente.
+ENQUADRAMENTO DAS FOTOGRAFIAS
+Todas as fotografias aparecem ampliadas e alinhadas pelo topo no espaço
+disponível do cartão. A zona inferior é cortada visualmente, sem deformação.
+Os originais transparentes aprovados são preservados. O layout não muda.
+
+FOTOGRAFIAS ATUALIZADAS — 14 RECORTES APROVADOS
+Inclui as 14 fotografias 2026/27 aprovadas individualmente, em PNG com
+transparência. Mantém nomes, números, posições, layout e funcionalidades.
+Atualiza as fotografias do plantel guardado uma única vez por dispositivo.
+Imagens incorporadas no HTML para utilização offline.
+
+NOVIDADES E CORREÇÕES DA v18.93
+1. Novo jogo ao reabrir após uma partida terminada: verifica primeiro o histórico,
+   arquiva se necessário e limpa apenas a partida atual. Resultado 0–0, relógio
+   20:00, sem atletas em campo, golos, cartões, faltas ou tempos acumulados.
+   Competição, ronda e adversário ficam por selecionar. Preserva nomes, números,
+   posições, fotografias, convocatória, biblioteca de clubes e histórico.
+   Ao terminar, o relatório continua disponível nessa sessão. Não limpa ao
+   alternar de aplicação sem recarregar. Jogos em curso são recuperados em pausa.
+   Se não conseguir guardar o histórico/preparar o novo jogo, mantém o anterior
+   e apresenta aviso, em vez de perder os dados.
+2. Texto claro sobre fundo escuro nos campos de edição de golos, cartões e faltas.
+3. Botão rápido Auto-golo com logótipo adversário, no espaço dos dois últimos
+   lugares da grelha quando são apresentados até 14 atletas. Sem logótipo ou
+   caso este falhe, mostra Auto-golo adversário. Reutiliza confirmação, registo
+   de período/momento/atletas em campo e soma um golo à nossa equipa.
+4. Retirado o botão Auto-golo adversário do quadro Partida. Mantém Golos/corrigir,
+   Cartões/corrigir, Faltas/corrigir e Definir GR.
+5. Após início da partida, bloqueia os três blocos da Partida: competição,
+   ronda, adversário, casa/fora, prolongamento e alterações à biblioteca/logo.
+   Num novo jogo voltam a permitir edição. Guardar Partida fica oculto durante
+   o bloqueio. As correções dos acontecimentos continuam disponíveis.
+6. Relógio: abrir Golos, Cartões ou Faltas não para o tempo; confirmar o registo
+   para o tempo. Cancelar um novo registo não altera o estado do relógio.
+   Abrange golo marcado/sofrido, auto-golos, amarelo/segundo amarelo/vermelho,
+   faltas e o golo adversário durante inferioridade. Retoma apenas pelo botão.
+   Substituições não provocam pausa. Correções mantêm as pausas já existentes.
+7. Atletas sem fotografia usam a silhueta neutra cinza-clara com transparência.
+8. Versão visível, APP_VERSION e version.json atualizados; tamanho e SHA-256
+   recalculados. Mantém as melhorias do topo introduzidas na v18.92.
+
+TESTAR
+Extrair todos os ficheiros do ZIP para uma pasta. Abrir index.html num navegador
+compatível. Para validar PWA/ecrã inteiro no tablet, usar alojamento de teste
+separado da versão estável; ficheiros locais não equivalem à PWA instalada.
+Testar: abrir/cancelar/confirmar cada tipo de acontecimento com relógio a correr;
+substituição; botão de auto-golo; campos bloqueados após início; texto de edição;
+atleta sem foto; terminar jogo, consultar relatório, fechar e reabrir.
+Verificar que o histórico conserva o jogo e a nova partida abre limpa.
 
 VALIDAÇÃO
-Esta versão é candidata e não foi publicada. A ocultação das barras e o aspeto
-final têm de ser confirmados no tablet; o navegador de teste deste ambiente
-tem bloqueado a abertura da aplicação local.
+Testes de execução automatizados: arranque, abrir/cancelar/confirmar registos,
+quatro tipos de golo, amarelo/segundo amarelo/vermelho, faltas, substituição,
+golo durante inferioridade, bloqueio, botão rápido, silhueta, recuperação de
+jogo terminado e em curso, conservação do histórico e plantel.
+Testes executados com imagens reduzidas no ambiente de teste, sem modificar
+as fotografias incluídas na aplicação. Integridade e metadados do ZIP verificados.
+Validação visual e toque no tablet ainda pendentes. Não assumir release estável.
+
+FICHEIROS
+index.html: funcionalidades e estilos acima; silhueta incorporada para offline.
+version.json: versão, tamanho e hash do HTML.
+LEIA-ME.txt: notas da versão e instruções.
+manifest.json, service-worker.js, ícones e fotografias existentes preservados.
