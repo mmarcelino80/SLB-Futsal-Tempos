@@ -1,3 +1,34 @@
+SL Benfica Futsal — v18.94 candidata
+Base: v18.93 publicada.
+
+ALTERAÇÕES DA v18.94
+1. Jornadas: reservas antigas sem jogo no histórico deixam de bloquear novas
+   partidas. Mantém bloqueio de duplicados reais na mesma competição e época.
+   Jornada 2 e Jornada 02 são reconhecidas como a mesma jornada.
+2. Histórico: botão Corrigir jornada. Para o jogo registado como Jornada 3,
+   escolher o jogo correto, indicar Jornada 2 e confirmar. Não altera golos,
+   faltas, cartões, tempos, resultado nem atletas. Impede duplicados reais.
+   A correção é feita no dispositivo que contém o histórico, não automaticamente.
+3. Faltas / corrigir: botão Adicionar falta. Escolher tipo, atleta convocada
+   (incluindo suplentes), parte e tempo restante mm:ss. Confirmar para guardar.
+   Mantém a pausa já existente no painel de correções; retoma no botão do jogo.
+   Atualiza contadores e relatórios sem alterar quem está em campo e sem pedir
+   informação de atletas/GR em campo no momento. Rejeita tempos futuros.
+
+TESTES
+Execução em DOM simulado: arranque, reserva antiga, duplicado real, equivalência
+Jornada 2/02, correção de jornada preservando eventos, bloqueio de duplicados na
+correção, adicionar falta a suplente, cancelar, totais por parte, relatório,
+rejeição de período futuro, editar e anular falta. Todos passaram.
+Validação visual/toque no tablet e dados reais do jogo ainda pendentes.
+
+FICHEIROS ALTERADOS
+index.html: três correções e identificação v18.94.
+version.json: versão, tamanho e SHA-256 do HTML.
+LEIA-ME.txt: alterações e instruções.
+Manifest, service worker, fotografias e restante layout preservados.
+
+NOTAS DA BASE v18.93
 SL Benfica Futsal — v18.93 candidata
 Base funcional aprovada pelo utilizador: v18.92
 Base publicada de referência: v18.91
