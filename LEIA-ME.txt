@@ -1,3 +1,79 @@
+SL Benfica Futsal — v18.96 candidata
+Base: v18.95 candidata.
+
+PACOTE OTIMIZADO PARA ENVIO PELO NAVEGADOR
+As 14 fotografias incorporadas foram convertidas para WebP sem perdas.
+Resolução, transparência e píxeis visíveis foram verificados contra os originais.
+O index.html passou de 29,30 MB para 20,42 MB (abaixo de 25 MB).
+Para atualizar pelo GitHub, extrair este ZIP e enviar index.html, version.json
+e LEIA-ME.txt para uma branch de atualização; publicar através de pull request.
+Não enviar o ZIP como substituto do index.html.
+
+ALTERAÇÕES DA v18.96
+Correção adicional: ao selecionar uma segunda GR no cinco inicial da 1.ª ou
+2.ª parte (também no prolongamento), é pedida confirmação de entrada como
+jogadora de campo. Cancelar mantém a seleção anterior; a primeira GR e a
+desmarcação continuam por toque normal. A exceção de duas GR é permitida
+apenas após confirmação, mantendo identificada quem assume a baliza.
+
+1. Após uma inferioridade numérica, a reposição com uma guarda-redes passa a
+   exigir confirmação. Se já existir uma GR em campo, o aviso confirma que a
+   atleta entra como jogadora de campo e identifica quem permanece na baliza.
+2. Se a 1.ª parte for terminada antes de 00:00, a aplicação mostra o tempo que
+   ainda falta e exige uma pressão contínua de 2 segundos para confirmar.
+3. O mesmo aviso com o tempo restante e a pressão de 2 segundos aplica-se ao
+   fim antecipado do jogo. Em 00:00, a confirmação volta a ser por toque normal.
+4. Cancelar qualquer confirmação não altera a fase, o relógio ou as atletas.
+
+TESTAR NA v18.96
+- Terminar uma inferioridade e escolher uma GR com outra GR na baliza; confirmar
+  e cancelar, verificando que só a confirmação efetua a entrada.
+- Repetir sem uma GR já identificada em campo.
+- Tentar terminar a 1.ª parte antes de 00:00; confirmar que o aviso mostra o
+  tempo correto, que um toque curto não termina e que 2 segundos terminam.
+- Repetir no fim do jogo e testar também ambos os botões em 00:00.
+
+FICHEIROS ALTERADOS NA v18.96
+index.html: confirmação de GR, finais antecipados e versão.
+version.json: versão, tamanho e SHA-256 do HTML.
+LEIA-ME.txt: alterações e testes desta candidata.
+
+NOTAS DA BASE v18.95
+SL Benfica Futsal — v18.95 candidata
+Base: v18.94 publicada.
+
+ALTERAÇÕES DA v18.95
+1. Histórico: cada jogo inclui agora o botão Exportar jogo. No Android/PWA,
+   abre a partilha do sistema quando suportada; no computador, descarrega um
+   ficheiro JSON individual. O ficheiro contém apenas o jogo selecionado.
+2. Histórico: novo botão Importar jogo, com validação do formato e da versão,
+   pré-visualização da competição, jornada, resultado, data e ocorrências.
+   Se o jogo já existir, permite Substituir existente, Guardar como cópia ou
+   Cancelar. A importação não altera plantel, preferências nem outros jogos.
+3. Os botões Início 1.ª Parte, Intervalo, Início 2.ª Parte e Fim do jogo foram
+   movidos para o rodapé, alinhados à esquerda e imediatamente antes de Plantel,
+   afastando-os do botão PARAR TEMPO. A lógica e confirmações foram preservadas.
+4. A confirmação de um golo mostra apenas o tipo de golo e a atleta associada.
+   Os elementos em campo continuam guardados no acontecimento e apresentados
+   no Histórico e nos relatórios.
+
+TESTAR NA v18.95
+- Exportar um jogo no tablet e no computador; confirmar partilha/download.
+- Importar noutro dispositivo e comparar relatório, golos, cartões, faltas,
+  resultado, atletas e tempos com o jogo original.
+- Reimportar o mesmo ficheiro e testar Substituir, Guardar como cópia e Cancelar.
+- Tentar importar um JSON inválido e confirmar que o Histórico não é alterado.
+- Confirmar o rodapé em tablet horizontal e num ecrã menor, sem sobreposições.
+- Registar golo marcado, sofrido e auto-golo; verificar a confirmação simples e
+  confirmar que o relatório continua a mostrar os elementos em campo.
+
+FICHEIROS ALTERADOS NA v18.95
+index.html: exportação/importação, rodapé, confirmação de golos e versão.
+version.json: versão, tamanho e SHA-256 do HTML.
+LEIA-ME.txt: alterações e testes desta candidata.
+Manifest, service worker, ícones, fotografias e restante lógica preservados.
+
+NOTAS DA BASE v18.94
 SL Benfica Futsal — v18.94 candidata
 Base: v18.93 publicada.
 
